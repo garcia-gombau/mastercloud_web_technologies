@@ -41,6 +41,6 @@ public class PlantDTO {
     }
 
     public Plant toDao(){
-        new Plant(this.id, this.city, this.planning);
+        return new Plant(this.id, this.city, this.planning);
     }
 }
