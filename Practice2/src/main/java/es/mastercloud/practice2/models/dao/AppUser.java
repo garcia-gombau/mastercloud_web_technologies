@@ -1,6 +1,9 @@
-package es.mastercloud.practice2.dto;
+package es.mastercloud.practice2.models.dao;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class AppUser {
@@ -8,12 +11,15 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private String username;
     private String email;
 
     public AppUser() {
 
+    }
+
+    public AppUser(long id) {
+        this.id = id;
     }
 
     public AppUser(String username, String email) {
@@ -50,7 +56,7 @@ public class AppUser {
         return "AppUser{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
+                ", email='" + email +
                 '}';
     }
 }
