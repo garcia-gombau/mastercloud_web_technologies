@@ -19,8 +19,11 @@ public class PlantStringBuilder {
         return this;
     }
 
+    public boolean ready(){
+         return !this.city.equals("") && !weather.equals("") && !landscape.equals("");
+    }
     public String build() {
-        String built = this.city +"-"+ this.weather +"-"+ this.landscape;
+        String built = (this.city +"-"+ this.weather +"-"+ this.landscape).toLowerCase();
         return built.charAt(0)<='m'?built.toLowerCase():built.toUpperCase();
     }
 

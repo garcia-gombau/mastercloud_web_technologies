@@ -1,13 +1,12 @@
 package es.mastercloud.server.models.dao;
 
-import es.mastercloud.server.models.dto.PlantDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Plant {
+public class EoloPlant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,14 +15,14 @@ public class Plant {
     String city;
     String planning;
 
-    public Plant() {}
+    public EoloPlant() {}
 
-    public Plant(String city, String planning) {
+    public EoloPlant(String city, String planning) {
         this.city = city;
         this.planning = planning;
     }
 
-    public Plant(long id, String city, String planning) {
+    public EoloPlant(long id, String city, String planning) {
         this.id = id;
         this.city = city;
         this.planning = planning;
@@ -53,7 +52,4 @@ public class Plant {
         this.planning = planning;
     }
 
-    public PlantDTO toDTO(){
-        return new PlantDTO(this.id, this.city, this.planning);
-    }
 }

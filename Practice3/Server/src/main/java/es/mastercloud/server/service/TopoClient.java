@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
@@ -17,10 +16,8 @@ public class TopoClient {
     private String url;
 
     @Async
-    public Future<String> getTopography(String city){
+    public Future<TopographicDetailsDTO> getTopography(String city){
         RestTemplate restTemplate = new RestTemplate();
-        return new AsyncResult<>(Objects.requireNonNull(
-                restTemplate.getForObject(url + "/" + city, TopographicDetailsDTO.class)).landscape()
-        );
+        return new AsyncResult<>(restTemplate.getForObject(url + "/" + city, TopographicDetailsDTO.class));
     }
 }

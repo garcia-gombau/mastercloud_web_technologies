@@ -5,6 +5,7 @@ import io.quarkus.grpc.GrpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Random;
 
 
 @GrpcService
@@ -18,6 +19,13 @@ public class WeatherGrpcService extends WeatherServiceGrpc.WeatherServiceImplBas
         Weather response = Weather.newBuilder().setCity(request.getCity()).setWeather(
                 VOWELS.contains(request.getCity().toLowerCase().substring(0,1))?"Rainy":"Sunny"
         ).build();
+        try {
+            Thread.sleep(new Random().nextLong(1000,3000));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(response);
+
 
         logger.debug("getWeather response: "+ response.getWeather());
 
